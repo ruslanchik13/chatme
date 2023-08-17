@@ -1,10 +1,9 @@
-import './App.css';
+import StyledButton from "./UI/Button/StyledButton";
 
 function App() {
   return (
     <>
-      123
-      <p>123ASDadasdas</p>
+      <StyledButton variant={"primary"} size={"large"}>Click me!</StyledButton>
     </>
   );
 }
