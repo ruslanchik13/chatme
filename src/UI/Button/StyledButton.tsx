@@ -1,8 +1,10 @@
 import styled, {css} from "styled-components";
-import {borderFull, borderMedium, opacity48, opacity64} from "../../../styles/variables";
+import {borderFull, borderMedium, opacity48, opacity64} from "../../styles/variables";
+import * as React from "react";
 
-export interface StyledButtonProps {
-  variant?: string,
+interface StyledButtonProps
+  extends React.ButtonHTMLAttributes<HTMLButtonElement>{
+  variant: "primary" | "danger" | "secondary" | "ghost",
   size: 'medium' | 'large'
 }
 
@@ -62,7 +64,9 @@ const variantStyles = (variant = 'primary') =>
     `
   }[variant]);
 
-export const StyledButton = styled.button<StyledButtonProps>`
+const StyledButton = styled.button<StyledButtonProps>`
   ${({variant}) => variantStyles(variant)};
   ${({size}) => size === 'medium' ? mediumSize : largeSize}
 `
+
+export default StyledButton;
