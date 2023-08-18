@@ -1,10 +1,10 @@
 import styled, {css} from "styled-components";
-import {TextProps} from "../interface";
+import {TextProps} from "../types";
 
 const textSemiBoldStyles = css<TextProps>`
   font-weight: 600;
   text-align: left;
-  color: ${({color = "black"}) => color };
+  color: ${({color }) => color };
 `
 
 export const TextSemiBold15 = styled.div`

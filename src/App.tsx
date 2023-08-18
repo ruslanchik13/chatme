@@ -1,9 +1,9 @@
-import StyledButton from "./UI/Button/StyledButton";
+import {AuthPage} from "@/pages";
 
 function App() {
   return (
     <>
-      <StyledButton variant={"primary"} size={"large"}>Click me!</StyledButton>
+      <AuthPage/>
     </>
   );
 }

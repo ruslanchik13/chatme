@@ -1,10 +1,10 @@
 import styled, {css} from "styled-components";
-import {TextProps} from "../interface";
+import {TextProps} from "../types";
 
 const textRegularStyles = css<TextProps> `
   font-weight: 400;
   text-align: left;
-  color: ${({color = "black"}) => color };
+  color: ${({color }) => color };
 `
 
 export const TextRegular15 = styled.div`

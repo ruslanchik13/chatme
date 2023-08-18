@@ -1,10 +1,10 @@
 import styled, {css} from "styled-components";
-import {TextProps} from "../interface";
+import {TextProps} from "../types";
 
 const textBoldStyles = css<TextProps>`
   text-align: left;
   font-weight: 700;
-  color: ${({color = "black"}) => color };
+  color: ${({color }) => color };
 `
 
 export const TextBold24 = styled.div`
