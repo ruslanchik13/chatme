@@ -4,11 +4,11 @@ import {InputProps} from "./types";
 
 interface MessageInputProps extends InputProps{}
 
-export const MessageInput: FC<MessageInputProps> = ({width, scale}) => {
+export const MessageInput: FC<MessageInputProps> = ({width, scale, ...props}) => {
   return (
-    <div>
-      <Input width={width} scale={scale}/>
-    </div>
+    <>
+      <Input {...props} width={width} scale={scale} />
+    </>
   );
 };
 

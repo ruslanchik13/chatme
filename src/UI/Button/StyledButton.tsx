@@ -6,7 +6,8 @@ import {IMargin, Margin} from "@/UI/Margin/Margin";
 export interface StyledButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement>, IMargin{
   variant: "primary" | "danger" | "secondary" | "ghost",
-  size: 'medium' | 'large'
+  size: 'medium' | 'large',
+  width?: number
 }
 
 const mediumSize = css`
@@ -66,8 +67,12 @@ const variantStyles = (variant = 'primary') =>
   }[variant]);
 
 export const StyledButton = styled.button<StyledButtonProps>`
+  display: flex;
+  justify-content: center;
+  align-items: center;
   ${({variant}) => variantStyles(variant)};
-  ${({size}) => size === 'medium' ? mediumSize : largeSize}
-  ${Margin}
+  ${({size}) => size === 'medium' ? mediumSize : largeSize};
+  ${Margin};
+  width: ${({width}) => width + "px"};
 `
 
