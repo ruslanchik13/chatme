@@ -1,10 +1,12 @@
 import {Auth} from "@/modules";
 
-export const AuthPage = () => {
+const AuthPage = () => {
   return (
     <div>
       <Auth/>
     </div>
   );
 };
+
+export default AuthPage;
 
