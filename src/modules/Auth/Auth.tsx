@@ -3,6 +3,7 @@ import {MailScreen} from "@/modules/Auth/components/MailScreen";
 import styled from "styled-components";
 import {useState} from "react";
 import EmailCodeScreen from "@/modules/Auth/components/EmailCodeScreen";
+import {WelcomeScreen} from "@/modules/Auth/components/WelcomeScreen";
 
 const HiddenScroll = styled.div`
   overflow: hidden;
@@ -23,8 +24,10 @@ export const Auth = () => {
         mailSc === 1 ?
           <MailScreen mail={mail} setMail={setMail} setMailSc={setMailSc}/>
           : mailSc === 2 ?
-            <EmailCodeScreen mail={mail} setMailSc={setMailSc}/> : ''
+            <EmailCodeScreen mail={mail} setMailSc={setMailSc}/> :
+          mailSc === 3 ? <WelcomeScreen setMailSc={setMailSc}/> : ''
       }
+
     </HiddenScroll>
   );
 };

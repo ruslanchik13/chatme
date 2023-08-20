@@ -4,8 +4,8 @@ import {Margin} from "@/UI/Margin/Margin";
 
 const textSemiBoldStyles = css<TextProps>`
   font-weight: 600;
-  text-align: left;
   color: ${({color }) => color };
+  text-align: ${({align }) => align  } | left;
   ${Margin}
 `
 

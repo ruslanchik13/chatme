@@ -4,7 +4,7 @@ import {Margin} from "@/UI/Margin/Margin";
 
 const textRegularStyles = css<TextProps> `
   font-weight: 400;
-  text-align: left;
+  text-align: ${({align }) => align  } | left;
   color: ${({color }) => color };
   ${Margin}
 `

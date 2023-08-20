@@ -3,7 +3,7 @@ import {TextProps} from "../types";
 import {Margin} from "@/UI/Margin/Margin";
 
 const textBoldStyles = css<TextProps>`
-  text-align: left;
+  text-align: ${({align }) => align  } | left;
   font-weight: 700;
   color: ${({color }) => color };
   ${Margin}

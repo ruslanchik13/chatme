@@ -1,9 +1,13 @@
-import {useRef, ChangeEvent, useState, KeyboardEvent} from "react";
+import {useRef, ChangeEvent, useState, KeyboardEvent, FC, useEffect} from "react";
 import {FlexWrapper, Input} from "@/UI";
 import {Div} from "@/UI/Div/Div";
 
 
-export const CodeInput = () => {
+interface CodeInputProps {
+  setConfirmCode: (b: boolean) => void,
+}
+
+export const CodeInput: FC<CodeInputProps> = ({setConfirmCode}) => {
 
   const [code, setCode] = useState<string[]>([])
   const inputRefs = useRef<HTMLInputElement[]>([]);
@@ -26,6 +30,15 @@ export const CodeInput = () => {
       inputRefs.current[index - 1].focus();
     }
   }
+
+  useEffect(() => {
+    const authCode = '112653'
+    if(code.join('') === authCode) {
+       return setConfirmCode(true)
+    }
+     return setConfirmCode(false)
+  }, [code])
+
   return (
     <Div mb={32}>
       <form>

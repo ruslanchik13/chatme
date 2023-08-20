@@ -1,5 +1,6 @@
 import {IMargin} from "@/UI/Margin/Margin";
 
 export interface TextProps extends IMargin{
-  color?: string
+  color?: string,
+  align?: string
 }
