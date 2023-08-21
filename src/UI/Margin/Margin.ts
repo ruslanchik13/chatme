@@ -8,8 +8,9 @@ export interface IMargin {
 }
 
 export const Margin = css<IMargin>`
-  margin-top: ${({mt}) => mt + "px"};
-  margin-bottom: ${({mb}) => mb + "px"};
-  margin-left: ${({ml}) => ml + "px"};
-  margin-right: ${({mr}) => mr + "px"};
+  //margin-top: ${({mt}) => mt ? mt + "px" : 0};
+  margin-bottom: ${({mb}) => mb ? mb + "px" : 0};
+  margin-left: ${({ml}) => ml ? ml + "px" : 0};
+  margin-right: ${({mr}) => mr ? mr + "px" : 0};
+  ${({mt}) => mt ? "margin-top: " + mt + "px" : ''}
 `

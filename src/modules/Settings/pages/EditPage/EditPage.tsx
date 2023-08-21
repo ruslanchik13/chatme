@@ -1,9 +1,9 @@
+import Edit from "@/modules/Settings/components/Edit/Edit";
 
 const EditPage = () => {
   return (
     <div>
-      EditPage EditPage EditPage EditPage EditPage EditPage EditPage
-      EditPage EditPage EditPage EditPage
+      <Edit/>
     </div>
   );
 };

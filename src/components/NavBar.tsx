@@ -8,26 +8,41 @@ import {
 import NavbarItem from "@/UI/NavBarItem/NavbarItem";
 import {Div} from "@/UI/Div/Div";
 import {FlexWrapper} from "@/UI";
-import {useState} from "react";
+import {useMemo, useState} from "react";
+import {useLocation} from "react-router-dom";
 
 
 const NavBar = () => {
 
-  const [activeIndex, setActiveIndex] = useState<number>(2)
+  type Item = {
+    id: number;
+    icon: JSX.Element;
+    activeIcon: JSX.Element;
+    link: string;
+  }
 
-  const icons = [
-    {id: 0,icon: <CompasSvg/>, activeIcon: <UseCompasSvg/>, link: '/'},
-    {id: 1,icon: <PersonSvg/>, activeIcon: <UsePersonSvg/>, link: '/'},
-    {id: 2,icon: <MessageSvg/>, activeIcon: <UseMessageSvg/>, link: '/'},
-    {id: 3,icon: <NotifSvg/>, activeIcon: <UseNotifSvg/>, link: '/'},
-    {id: 4,icon: <SettingsSvg/>, activeIcon: <UseSettingsSvg/>, link: '/settings'},
+  const items: Item[] = [
+    {id: 0, icon: <CompasSvg/>, activeIcon: <UseCompasSvg/>, link: '/collections'},
+    {id: 1, icon: <PersonSvg/>, activeIcon: <UsePersonSvg/>, link: '/contacts'},
+    {id: 2, icon: <MessageSvg/>, activeIcon: <UseMessageSvg/>, link: '/chats'},
+    {id: 3, icon: <NotifSvg/>, activeIcon: <UseNotifSvg/>, link: '/notifications'},
+    {id: 4, icon: <SettingsSvg/>, activeIcon: <UseSettingsSvg/>, link: '/settings'},
   ]
+
+  const location = useLocation()
+  const indexFinder = (arr: Item[]) => {
+    const locate = arr.find(el => location.pathname.includes(el.link))
+    return locate && location.pathname.includes(locate.link) ? locate.id : 0
+  }
+  const defaultIndex = useMemo(() => indexFinder(items), [items, location.pathname]);
+  const [activeIndex, setActiveIndex] = useState<number>(defaultIndex)
+
   return (
     <Div bgColor={"rgba(242, 243, 245, 1)"} height={840} width={64}>
       <FlexWrapper direction={"column"}>
         <Div mb={16} mt={16}><LogoBarSvg/></Div>
         <Div mb={444}>
-          {icons.map((item, index) =>
+          {items.map((item, index: number) =>
             <NavbarItem
               onClick={() => setActiveIndex(index)}
               isActive={activeIndex === index}
